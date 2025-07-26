@@ -39,3 +39,7 @@ resource "aws_lambda_function" "text_to_speech" {
   source_code_hash = filebase64sha256("lambda.zip") 
 }
 //done
+// when you write terraform apply, the main funcrion will create an iam role that would be interpreted by lambda 
+// then it will see the policies lambda is subjected to like basic execution policy
+//then it will run the text to speech function using lambda, where it it connects to the lambda.tf file which contain handler.py + the dependencies to run it
+// when you go to aws console and look at lambda service it will have lambda.zip file which has handler.py + dependency required to run lambda function.
