@@ -7,10 +7,12 @@
 provider "aws" {
                 region = "us-east-1"
 }
-// Now ill go to lambda to create an automation script to call polly
-// after that i will need to deploy that lambda function using terraform for aws to septup lambda initially
+// now I'll make 3 resources using terraform to deploy aws resources 
 
-resource "aws_iam_role" "lambda_exec_role" {
+// RESOURCE:1 - creating an iam role called lambda_role so that lamda can be run in the next steps 
+// only lamda is allowed to access this iam role
+
+resource "aws_iam_role" "lambda_role" { 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -22,16 +24,16 @@ resource "aws_iam_role" "lambda_exec_role" {
     }]
   })
 }
-
+//RESOURCE: 2 : Attaching basic execution policies for lambda
 resource "aws_iam_role_policy_attachment" "lambda_policy" {
-  role       = aws_iam_role.lambda_exec_role.name
+  role       = aws_iam_role.lambda_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
-
+//RESOURCE 3 : Actuall calling lambda to run the main logic which is handler.py
 resource "aws_lambda_function" "text_to_speech" {
-  filename         = "lambda.zip"
-  function_name    = "textToSpeechLambda"
-  role             = aws_iam_role.lambda_exec_role.arn
+  filename         = "lambda.zip" // zipped file . Zipping file is neessary as during deployment , unzipped folders arent accepted.
+  function_name    = "textToSpeechLambda" //name oflamda function thst will appear in aws console
+  role             = aws_iam_role.lambda_role.arn
   handler          = "handler.lambda_handler"
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("lambda.zip")
