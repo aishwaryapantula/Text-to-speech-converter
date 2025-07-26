@@ -32,9 +32,9 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
 //RESOURCE 3 : Actuall calling lambda to run the main logic which is handler.py
 resource "aws_lambda_function" "text_to_speech" {
   filename         = "lambda.zip" // zipped file . Zipping file is neessary as during deployment , unzipped folders arent accepted.
-  function_name    = "textToSpeechLambda" //name oflamda function thst will appear in aws console
-  role             = aws_iam_role.lambda_role.arn
+  function_name    = "textToSpeechLambda" //name of lamda function that will appear in aws console
+  role             = aws_iam_role.lambda_role.arn //which iam role to activate is decided by the arn of that role
   handler          = "handler.lambda_handler"
   runtime          = "python3.12"
-  source_code_hash = filebase64sha256("lambda.zip")
+  source_code_hash = filebase64sha256("lambda.zip") 
 }
