@@ -38,3 +38,4 @@ resource "aws_lambda_function" "text_to_speech" {
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("lambda.zip") 
 }
+//done
