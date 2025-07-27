@@ -7,3 +7,5 @@ output "function_name" {
 output "function_arn" {
     value = aws_lambda_function.text_to_speech.arn // will display arn used
 }
+//output.tf should not be need to run manually. when you write "terraform.apply" output.tf will be run too 
+// on writing "terraform.apply", every tf file runs. 
