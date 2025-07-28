@@ -7,7 +7,7 @@
 provider "aws" {
                 region = "us-east-1"
 }
-// now I'll make 3 resources using terraform to deploy aws resources 
+//* / now I'll make 3 resources using terraform to deploy aws resources 
 
 // RESOURCE:1 - creating an iam role called lambda_role so that lamda can be run in the next steps 
 // only lamda is allowed to access this iam role
@@ -42,4 +42,4 @@ resource "aws_lambda_function" "text_to_speech" {
 // when you write terraform apply, the main funcrion will create an iam role that would be interpreted by lambda 
 // then it will see the policies lambda is subjected to like basic execution policy
 //then it will run the text to speech function using lambda, where it it connects to the lambda.tf file which contain handler.py + the dependencies to run it
-// when you go to aws console and look at lambda service it will have lambda.zip file which has handler.py + dependency required to run lambda function.
+// when you go to aws console and look at lambda service it will have lambda.zip file which has handler.py + dependency required to run lambda function. */ */
