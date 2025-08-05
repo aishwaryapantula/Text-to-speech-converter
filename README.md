@@ -123,3 +123,4 @@ Debugging and structure best practices
 If you learn those, you can confidently say:
 
 “I know Terraform well enough to build, manage, and automate real AWS infrastructure.”
+Prerequisits for Interview 
