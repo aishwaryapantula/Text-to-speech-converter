@@ -47,6 +47,11 @@ resource "aws_lambda_function" "text_to_speech" {
 resource "aws_apigatewayv2_api" "create_api" {
     name = "text_to_speech_api"
     protocol_type = "HTTP"  
+      cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["POST", "OPTIONS"]
+    allow_headers = ["Content-Type"]
+  }
 }
 //RESOURCE 5 : integrtion of apigateway with lambda
 resource "aws_apigatewayv2_integration" "api_integration" {
@@ -67,6 +72,7 @@ resource "aws_apigatewayv2_stage" "api_stage" {
   api_id = aws_apigatewayv2_api.create_api.id
   name ="prod"
   auto_deploy = true
+  
 }
 // RESOURCE 7 : Allowing api to call lambda so that lambda can later access polly (which is done by iam)
 resource "aws_lambda_permission" "allow_apigw" {
