@@ -6,6 +6,7 @@ API Gateway
 AWS Lambda
 AWS Polly
 Terraform and Python Scripts 
+
  2-3 minutes explanatin :
  1. Project Introduction (Goal)
 "The project I worked on was building a Text-to-Speech converter using AWS Polly. The idea was to take text input from users through an API and convert it into natural-sounding speech. I chose to automate the entire infrastructure using Terraform, so that everything — from IAM roles to Lambda and API Gateway — gets deployed consistently in one command."
@@ -30,4 +31,3 @@ Terraform and Python Scripts
 
 8. Why This Project is Valuable
 "This project demonstrates how Infrastructure as Code simplifies cloud deployments, how different AWS services integrate together, and how IAM roles and permissions play different roles in deployment versus runtime. It also taught me about securing APIs, packaging Lambda functions, and managing resources consistently with Terraform."
-hello there
