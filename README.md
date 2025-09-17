@@ -31,3 +31,4 @@ Terraform and Python Scripts
 
 8. Why This Project is Valuable
 "This project demonstrates how Infrastructure as Code simplifies cloud deployments, how different AWS services integrate together, and how IAM roles and permissions play different roles in deployment versus runtime. It also taught me about securing APIs, packaging Lambda functions, and managing resources consistently with Terraform."
+hrllo there
